@@ -1,4 +1,5 @@
 <?php
+session_start();
     include('config/db.php');
     if(isset($_POST['login'])){
         $email = $_POST['email'];
@@ -10,14 +11,19 @@
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_assoc($result)){
                     $id = $row['id'];
-                    $id = $row['username'];
-                    $id = $row['password'];
-                    $id = $row['email'];
+                    $username = $row['username'];
+                    $password = $row['password'];
+                    $email = $row['email'];
 
+                    $_SESSION['id'] = $id;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['email'] = $email;
+                    header('Location:dashboard.php');
                 }
             }
             else {
-
+                $error = "Username or password is incorrect.";
             }
         }
         else{
@@ -25,6 +31,11 @@
         }
     }
 ?>
+<?php if(isset($_SESSION['username'])):?>
+    <?php header('Location:dashboard.php');?>
+
+<?php else:?>
+
 <?php include('inc/header.php');?>
 <style>
 <?php include('assets/css/main.css');
@@ -48,10 +59,20 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="form-group">
+                <div class="row align-items-baseline">
+                    <div class="col-lg-6">
 
-                    <input type="submit" name="login" class="btn btn-primary">
-                    <button type="reset" class="btn btn-light">Reset</button>
+                        <div class="form-group">
+
+                            <input type="submit" name="login" class="btn btn-primary">
+                            <button type="reset" class="btn btn-light">Reset</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <a href="index.php">Sign Up!</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -80,3 +101,4 @@
 <?php
     include('inc/footer.php');
 ?>
+<?php endif;?>

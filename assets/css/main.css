@@ -1,3 +1,17 @@
 .custom-container{
     padding: 25px 0 25px 0;
 }
+
+.avatar{
+    width: 200px;
+    border-radius: 50%;
+}
+
+.avatar > img{
+    vertical-align: middle;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}

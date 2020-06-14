@@ -31,6 +31,7 @@
     <div class="row">
         <div class="col-lg-5">
             <legend>Register User</legend>
+            <hr>
             <form action="index.php" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -48,12 +49,20 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="form-group">
+                <div class="row align-items-baseline">
+                    <div class="col-lg-6">
+                        <div class="form-group">
 
-                    <input type="submit" name="register" class="btn btn-primary">
-                    <button type="reset" class="btn btn-light">Reset</button>
+                            <input type="submit" name="register" class="btn btn-primary">
+                            <button type="reset" class="btn btn-light">Reset</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <a href="login.php">Login!</a>
+                        </div>
+                    </div>
                 </div>
-
                 <div class="form-group">
                     <?php if(isset($_POST['register'])):?>
                     <div class="alert alert-warning" role="alert">
