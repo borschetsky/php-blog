@@ -21,43 +21,38 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                <?php if(isset($_SESSION['username'])):?>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="dashboard.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <?php endif;?>
+                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="feed.php">Feed <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
+                   
+                   
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
                     <?php if(isset($_SESSION['username'])):?>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
+                            Profile actions
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="createpost.php">Write new post</a>
+
+                            <a class="dropdown-item" href="profile.php">Update profile</a>
                             <hr>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                     </div>
+                    <?php endif;?>
+                    <?php if(!isset($_SESSION['username'])):?>
+                    
+                        <a class="btn btn-primary" href="login.php">Login <span class="sr-only">(current)</span></a>
+                    
                     <?php endif;?>
                 </div>
             </div>

@@ -15,3 +15,24 @@
     border-radius: 50%;
 
 }
+
+.author-small-image{
+    vertical-align: middle;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.custom-card{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.margin-bottom{
+    margin-bottom: 10px;
+}
