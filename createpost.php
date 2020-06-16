@@ -27,6 +27,8 @@
             $isValid = 0;
         }
         if($isValid == 1){
+            $title = mysqli_real_escape_string($conn, $title);
+            $body = mysqli_real_escape_string($conn, $body);
             $sql = "INSERT INTO posts(author_id, title, body) VALUES('$author_id', '$title', '$body')";
             $query = $conn->query($sql);
             if($query){

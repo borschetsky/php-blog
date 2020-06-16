@@ -6,9 +6,9 @@
 <?php
     include("config/db.php");
     if(isset($_POST['register'])){
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $username =  mysqli_real_escape_string($conn, $_POST['username']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
         if($username != '' && $password != '' && $password != ''){
             $pwd_hash = sha1($password);
             $sql = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$pwd_hash')";

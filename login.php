@@ -2,8 +2,8 @@
 session_start();
     include('config/db.php');
     if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
         if($email != '' && $password != ''){
             $pwd_enc = sha1($password);
             $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$pwd_enc'";
